@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Lil Princess 🌹</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            perspective: 1000px;
+        }
+
+        .card-step {
+            display: none;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 30px 20px;
+            box-shadow: 0 15px 35px rgba(230, 57, 70, 0.2);
+            text-align: center;
+            border: 2px solid #fff;
+            animation: fadeIn 0.8s ease-in-out forwards;
+            position: relative;
+        }
+
+        .card-step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Postcard Section */
+        .postcard {
+            border: 3px dashed #ff4b5c;
+            padding: 25px 15px;
+            border-radius: 16px;
+            background: #fff0f3;
+            position: relative;
+        }
+
+        .stamp {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 50px;
+            height: 60px;
+            border: 2px dashed #ff4b5c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            background: #fff;
+            transform: rotate(8deg);
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: #888;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .address-box {
+            text-align: left;
+            margin: 20px 0;
+            padding: 15px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .address-box p {
+            margin: 10px 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .address-box span {
+            color: #ff2e63;
+        }
+
+        /* Flower & Cartoon Section */
+        .bouquet-img {
+            font-size: 80px;
+            animation: pulse 2s infinite;
+            margin: 15px 0;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .cartoon-stickers {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .sticker-card {
+            background: #fff;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 45%;
+        }
+
+        .sticker-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: contain;
+        }
+
+        .quote-box {
+            background: #ffe3e8;
+            padding: 15px;
+            border-radius: 12px;
+            font-style: italic;
+            color: #c70039;
+            margin: 15px 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Unboxing Section */
+        .gift-box {
+            font-size: 100px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin: 20px 0;
+        }
+
+        .gift-box:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Quotes Card Section */
+        .quotes-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .quote-card {
+            background: #fff;
+            border-left: 5px solid #ff4b5c;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .quote-card h4 {
+            color: #ff2e63;
+            margin-bottom: 5px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .quote-card p {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        /* Letter Styling */
+        .letter-content {
+            background: #fffdf9;
+            border: 1px solid #f3e5ab;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: left;
+            font-family: 'Dancing Script', cursive;
+            font-size: 20px;
+            line-height: 1.6;
+            color: #4a2c2a;
+            max-height: 350px;
+            overflow-y: auto;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        /* Button Styling */
+        .btn {
+            background: linear-gradient(45deg, #ff4b2b, #ff416c);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 65, 108, 0.4);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 65, 108, 0.6);
+        }
+
+        /* Music Player Floating Bar */
+        .music-player {
+            margin-top: 15px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .music-player p {
+            font-size: 12px;
+            color: #555;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- STEP 1: POSTCARD -->
+        <div class="card-step active" id="step1">
+            <div class="postcard">
+                <div class="stamp">📮</div>
+                <div class="tagline">SPECIAL DELIVERY 💌</div>
+                <h2 style="color: #ff2e63; font-family: 'Dancing Script', cursive; font-size: 32px;">A Special Surprise!</h2>
+                
+                <div class="address-box">
+                    <p><b>FROM:</b> <span>YOUR DADA 🌹</span></p>
+                    <p><b>TO:</b> <span>MY LIL PRINCESS 🤏😭🌹</span></p>
+                </div>
+
+                <p style="font-size: 13px; color: #666; margin-bottom: 15px;">You have received a special card from your Dada. Click below to open!</p>
+                
+                <button class="btn" onclick="nextStep(2)">Open Surprise ✨</button>
+            </div>
+        </div>
+
+        <!-- STEP 2: BOUQUET & CARTOONS -->
+        <div class="card-step" id="step2">
+            <h2 style="color: #c70039;">For My Dearest Thangachi 💐</h2>
+            <div class="bouquet-img">💐🌹🌻</div>
+
+            <div class="cartoon-stickers">
+                <div class="sticker-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/b/bd/Doraemon_character.png" alt="Doraemon">
+                    <p style="font-size: 12px; font-weight: bold; color: #00a8ff;">Doraemon</p>
+                </div>
+                <div class="sticker-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Shin-chan_character.png" alt="Shinchan">
+                    <p style="font-size: 12px; font-weight: bold; color: #ff3f34;">Shin-chan</p>
+                </div>
+            </div>
+
+            <div class="quote-box">
+                "Non-blood sister by chance, soul sister by choice. You are the sweetest miracle in my life! 💖"
+            </div>
+
+            <button class="btn" onclick="nextStep(3)">Unbox The Gift 🎁</button>
+        </div>
+
+        <!-- STEP 3: UNBOXING -->
+        <div class="card-step" id="step3">
+            <h2 style="color: #ff2e63;">Tap the Gift Box! 🎁</h2>
+            <p style="font-size: 14px; color: #666; margin-top: 5px;">There's a special message & letter waiting inside...</p>
+            
+            <div class="gift-box" onclick="nextStep(4)">
+                🎁
+            </div>
+
+            <p style="font-size: 12px; color: #888;">(Click the gift box to open!)</p>
+        </div>
+
+        <!-- STEP 4: SUPPORTIVE & BOLD QUOTES -->
+        <div class="card-step" id="step4">
+            <h2 style="color: #ff2e63;">Always Remember This, Princess! 👑✨</h2>
+            <p style="font-size: 13px; color: #666; margin-top: 5px;">Unakkaga un Anna eppovum iruppan!</p>
+
+            <div class="quotes-container">
+                <div class="quote-card">
+                    <h4>🦁 Always Be Bold & Strong</h4>
+                    <p>"Enna kashtam vandhalum bayapadadha. Nee dharaiyidatha strong-ana ponnu! Unala edhaiyum face panna mudiyum."</p>
+                </div>
+
+                <div class="quote-card">
+                    <h4>🛡️ Un BackBone Naan Irruken</h4>
+                    <p>"Naan irukumbodhu nee edhuku kavalapaduriya? Life-la enna prachana vandhalum un Anna unakku pinnadi oru paara maari iruppan!"</p>
+                </div>
+
+                <div class="quote-card">
+                    <h4>🌟 Chase Your Dreams Fearlessly</h4>
+                    <p>"Un kanavugalai bayam illama thodarndhu podu. Un vazhiyile varra ellaa thadagalaiyum thagardhuttu unnala win panna mudiyum."</p>
+                </div>
+            </div>
+
+            <button class="btn" onclick="nextStep(5)">Read My Heart Letter 💌</button>
+        </div>
+
+        <!-- STEP 5: PERSONAL LETTER & SONG -->
+        <div class="card-step" id="step5">
+            <h2 style="color: #ff2e63; margin-bottom: 10px;">En Thangapullah... 💖</h2>
+            
+            <div class="letter-content">
+                hey en chella magaleeyyy 😭💗<br><br>
+                naa un ta sonnadhu illa ana nee nenaikuradhu vida indha anna ku onnaya rombaaaaaaaaaaa rombaaaaaaaa pudikum!! en kuda enaku epolam yaarum illanu naa nenaikren oh apolam enaku support ah nee irundhuruka, really im blessed to have you !! 🤏😭<br><br>
+                onnah ennoda thangachi nu soldradhu vida ennoda ponnu nee !! en thangapullah 😭💗🤲<br><br>
+                oru naalum indha annan ah vitu ponum nu lam nenaikaadha pleaseeeeeeee !! 😭😭 indha bond namakulla epdi creat aachi adhulam thereyala, just lyk a miracle oru ethir paakadha bond creat aagi ipo ennoda oru part of life !!<br><br>
+                ennoda goods , bads elameyy therija ennoda oru paadhi ah iruka !! 😭🤲 onaku ennah prachana naalum indha anna ta vandhuduu !! onaku nu naa iruken un backbone ah un anna irukaan , irupaaan !!<br><br>
+                life long naa miss eh pannida kudaadha varam nee !! 😭💗🤏🌹<br><br>
+                just lysmmmmmmmmm thangameeeey 😭🤲💗
+            </div>
+
+            <div class="music-player">
+                <span>🎵</span>
+                <p>Play Song Background:</p>
+                <a href="https://youtu.be/hPdn9OcIeeQ?si=13ZPe-abbWKcahLJ" target="_blank" class="btn" style="padding: 5px 15px; font-size: 12px;">Play Music 🎶</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function nextStep(step) {
+            document.querySelectorAll('.card-step').forEach(el => el.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+        }
+    </script>
+</body>
+</html>
